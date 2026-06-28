@@ -62,4 +62,38 @@ p{
 a{
     color:gold;
     text-decoration:none;
+}.price-card{
+    background:#222;
+    border:2px solid gold;
+    border-radius:12px;
+    padding:20px;
+    margin:20px 0;
+    text-align:left;
+}
+
+.price-card h2{
+    color:gold;
+    margin-bottom:10px;
+}
+
+.price{
+    font-size:28px;
+    font-weight:bold;
+    color:#FFD700;
+    margin:15px 0;
+}
+
+.feature{
+    margin:8px 0;
+    color:white;
+}
+
+.popular{
+    background:gold;
+    color:black;
+    padding:5px 12px;
+    border-radius:20px;
+    font-weight:bold;
+    display:inline-block;
+    margin-bottom:10px;
 }
