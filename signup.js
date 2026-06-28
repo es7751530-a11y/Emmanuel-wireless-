@@ -1,5 +1,6 @@
-import { auth } from "./firebase.js";
+import { auth, db } from "./firebase.js";
 import { createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
 const signupBtn = document.getElementById("signupBtn");
 
@@ -25,7 +26,12 @@ signupBtn.addEventListener("click", () => {
                 displayName: fullName
             });
 
-            alert("Account created successfully!");
+            alert("Account created successfully!");await setDoc(doc(db, "users", userCredential.user.uid), {
+  fullName: fullName,
+  phone: phone,
+  email: email,
+  createdAt: new Date().toISOString()
+});
             window.location.href = "index.html";
         })
         .catch((error) => {
