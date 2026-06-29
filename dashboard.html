@@ -3,56 +3,141 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard</title>
+
+<title>Emmanuel Wireless Dashboard</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<div class="login-box">
+<!-- HEADER -->
 
-<h1>Welcome to Emmanuel Wireless</h1>
+<div class="top-bar">
 
-<h3 id="welcomeUser">Loading...</h3>
+<div class="menu-btn">
+☰
+</div>
 
-<p>You have successfully logged in.</p>
+<div class="logo-text">
+<h2>Emmanuel Wireless</h2>
+<p>Digital Solutions</p>
+</div>
 
-<button onclick="window.location.href='home.html'">
-Go to Home
-</button>
-
-<button id="logoutBtn">
-Logout
-</button>
+<div class="profile-icon">
+👤
+</div>
 
 </div>
 
-<script type="module">
+<!-- WELCOME -->
 
-import { auth } from "./firebase.js";
-import {
-  onAuthStateChanged,
-  signOut
-} from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
+<div class="welcome-card">
 
-const welcomeUser = document.getElementById("welcomeUser");
+<h2 id="welcomeUser">
+Loading...
+</h2>
 
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        welcomeUser.innerText = "Hello, " + (user.displayName || user.email);
-    } else {
-        window.location.href = "index.html";
-    }
-});
+<p>
+Welcome back to your dashboard.
+</p>
 
-document.getElementById("logoutBtn").addEventListener("click", () => {
-    signOut(auth).then(() => {
-        alert("Logged out successfully.");
-        window.location.href = "index.html";
-    });
-});
+</div>
 
-</script>
+<!-- ANNOUNCEMENT -->
+
+<div class="announcement-card">
+
+<h2>📢 Latest Announcement</h2>
+
+<p id="announcementText">
+Loading latest announcement...
+</p>
+
+</div>
+
+<!-- SERVICES -->
+
+<div class="service-grid">
+
+<div class="service-card"
+onclick="location.href='services.html'">
+
+🌐
+
+<h3>Services</h3>
+
+</div>
+
+<div class="service-card"
+onclick="location.href='profile.html'">
+
+👤
+
+<h3>Profile</h3>
+
+</div>
+
+<div class="service-card"
+onclick="location.href='contact.html'">
+
+📞
+
+<h3>Contact</h3>
+
+</div>
+
+<div class="service-card"
+onclick="window.open('https://wa.me/2349162813500')">
+
+💬
+
+<h3>WhatsApp</h3>
+
+</div>
+
+<div class="service-card"
+id="adminCard"
+onclick="location.href='admin.html'"
+style="display:none;">
+
+👑
+
+<h3>Admin</h3>
+
+</div>
+
+<div class="service-card"
+id="logoutBtn">
+
+🚪
+
+<h3>Logout</h3>
+
+</div>
+
+</div>
+
+<!-- BOTTOM NAVIGATION -->
+
+<div class="bottom-nav">
+
+<a href="dashboard.html">
+🏠 Home
+</a>
+
+<a href="services.html">
+💻 Services
+</a>
+
+<a href="profile.html">
+👤 Profile
+</a>
+
+</div>
+
+<script type="module" src="dashboard.js"></script>
 
 </body>
 </html>
